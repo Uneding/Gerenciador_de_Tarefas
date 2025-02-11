@@ -1,2 +1,2 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Layout;
+Formatacao.ImprimirCabecalho("MAs ai não PORRA");
