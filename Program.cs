@@ -1,2 +1,6 @@
 ﻿using Layout;
-Formatacao.ImprimirCabecalho("MAs ai não PORRA");
+do
+{
+    Formatacao.ImprimirCabecalho();
+    
+}while(Formatacao.DecisaoMenu(Console.ReadLine())!=null);
