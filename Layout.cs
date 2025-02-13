@@ -32,36 +32,8 @@ namespace Layout
             }
 
         }
-        public static void ImprimirCabecalho()
-        {
-            Console.Clear();
-            Cabecalho("Gerenciador de Tarefas");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("         Escolha as opções: \n           1 - Adicionar Tarefa\n           2 - Listar Tarefas \n           3 - Concluir Tarefa\n           4 - Remover Tarefa\n           0 - Sair\n");
-        }
-        public static void Cabecalho(string text)
-        {
-            int Centro_X = Console.WindowWidth / 2;
-            Console.SetCursorPosition(Centro_X - ((text.Length / 2) + 2), 10);
-            Console.Write("╔");
-            for (int i = 0; i <= (text.Length + 1); i++)
-            {
-                Console.Write("═");
-            }
-            Console.Write("╗");
-            Console.SetCursorPosition(Centro_X - ((text.Length / 2) + 2), 11);
-            Console.Write($"║ {text} ║");
-            Console.SetCursorPosition(Centro_X - ((text.Length / 2) + 2), 12);
-            Console.Write("╚");
-            for (int i = 0; i <= (text.Length + 1); i++)
-            {
-                Console.Write("═");
-            }
-            Console.Write("╝");
-            Console.WriteLine();
-        }
+        
+        
         public void Tamanho(int x, int y)
         {
             Console.WindowHeight = x;
@@ -134,6 +106,42 @@ namespace Layout
 
                     break;
             }
+        }
+        
+    }
+    public class Corpo
+    {
+        public  int Posicao_Coluna {get;set;}
+        public  int Posicao_Linha_inicio {get;set;}
+        public static List<String> Linhas = new List<string>();
+        public static void Adicionar_Linha(string Linha)
+        {
+            Linhas.Add(Linha);
+        }
+    }
+    public class Cabecalho
+    {
+        string Titulo {get;set;}
+        public void Caixa ()
+        {
+            int Centro_X = Console.WindowWidth / 2;
+            Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), 10);
+            Console.Write("╔");
+            for (int i = 0; i <= (Titulo.Length + 1); i++)
+            {
+                Console.Write("═");
+            }
+            Console.Write("╗");
+            Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), 11);
+            Console.Write($"║ {Titulo} ║");
+            Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), 12);
+            Console.Write("╚");
+            for (int i = 0; i <= (Titulo.Length + 1); i++)
+            {
+                Console.Write("═");
+            }
+            Console.Write("╝");
+            Console.WriteLine();
         }
     }
 }
