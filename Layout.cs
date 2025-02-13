@@ -113,10 +113,15 @@ namespace Layout
     {
         public  int Posicao_Coluna {get;set;}
         public  int Posicao_Linha_inicio {get;set;}
-        public static List<String> Linhas = new List<string>();
-        public static void Adicionar_Linha(string Linha)
+        public  List<String> Linhas = new List<string>();
+        public void Adicionar_Linha(string Linha)
         {
             Linhas.Add(Linha);
+        }
+        public void Adcionar_Posicao(int x, int y)
+        {
+            Posicao_Coluna = x;
+            Posicao_Linha_inicio = y;
         }
     }
     public class Cabecalho
