@@ -1,6 +1,19 @@
 ﻿using Layout;
-do
+int ? x;
+while(true)
 {
     Formatacao.ImprimirCabecalho();
-    
-}while(Formatacao.DecisaoMenu(Console.ReadLine())!=null);
+    x = Formatacao.DecisaoMenu(Console.ReadLine());
+    if(x == null)
+    {
+        Console.WriteLine("Valor nulo");
+        Thread.Sleep(1000);
+        Console.Clear();
+        continue;
+    }else if(x==0)
+    {
+        break;
+    }
+    Formatacao.menu(x);
+}
+   
