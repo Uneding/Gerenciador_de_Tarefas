@@ -2,13 +2,16 @@
 using Paginas_layout;
 Pagina pagina1 = new Pagina("Menu Principal");
 Corpo menu = new Corpo();
-menu.Adcionar_Posicao(10, 40);
+Cabecalho Superior = new Cabecalho();
+Superior.Adicionar_Titulo("Gerenciador de Tarefas");
+menu.Adcionar_Posicao(10, 30);
 menu.Adicionar_Linha("1 - Adicionar Tarefa.");
 menu.Adicionar_Linha("2 - Listar Tarefas.");
 menu.Adicionar_Linha("3 - Concluir Tarefa.");
 menu.Adicionar_Linha("4 - Remover Tarefa.");
 menu.Adicionar_Linha("0 - Sair.");
 var bloco1 = new Bloco(0f, 0f, 1f, 0.2f, "Black", null);
+bloco1.Adicionar_Cabecalho(Superior);
 pagina1.AdicionarBloco(bloco1);
 var bloco2 = new Bloco(0f, 0.2f, 1f, 0.8f, "Blue", menu);
 pagina1.AdicionarBloco(bloco2);

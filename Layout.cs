@@ -1,5 +1,6 @@
 using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using GerenciadorTarefa;
 using Tarefas;
 
@@ -32,8 +33,8 @@ namespace Layout
             }
 
         }
-        
-        
+
+
         public void Tamanho(int x, int y)
         {
             Console.WindowHeight = x;
@@ -107,13 +108,13 @@ namespace Layout
                     break;
             }
         }
-        
+
     }
     public class Corpo
     {
-        public  int Posicao_Coluna {get;set;}
-        public  int Posicao_Linha_inicio {get;set;}
-        public  List<String> Linhas = new List<string>();
+        public int Posicao_Coluna { get; set; }
+        public int Posicao_Linha_inicio { get; set; }
+        public List<String> Linhas = new List<string>();
         public void Adicionar_Linha(string Linha)
         {
             Linhas.Add(Linha);
@@ -126,28 +127,55 @@ namespace Layout
     }
     public class Cabecalho
     {
-        string Titulo {get;set;}
-        public void Caixa ()
+        string Titulo { get; set; }
+        int Largura_Bloco { get; set; }
+        public int contador = 0;
+        int Altura_Bloco { get; set; }
+        public int Referecia_Tamanho_Titulo()
         {
-            int Centro_X = Console.WindowWidth / 2;
-            Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), 10);
-            Console.Write("╔");
-            for (int i = 0; i <= (Titulo.Length + 1); i++)
+            return Titulo.Length / 2 + 2;
+        }
+        public void Adicionar_Referencia_Bloco(int lar_Bloco, int Alt_Bloco)
+        {
+            Largura_Bloco = lar_Bloco;
+            Altura_Bloco = Alt_Bloco;
+        }
+        public void Caixa()
+        {
+            int Centro_X = Largura_Bloco / 2;
+            Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), Altura_Bloco / 2 - 1);
+            switch (contador)
             {
-                Console.Write("═");
+                case 0:
+                    Console.Write("╔");
+                    for (int i = 0; i <= (Titulo.Length + 1); i++)
+                    {
+                        Console.Write("═");
+                    }
+                    break;
+                case 1:
+                    Console.Write("╗");
+                    Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), Altura_Bloco / 2);
+                    Console.Write($"║ {Titulo} ║");
+                    Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), Altura_Bloco / 2 + 1);
+                    Console.Write("╚");
+                    break;
+                case 2:
+                    for (int i = 0; i <= (Titulo.Length + 1); i++)
+                    {
+                        Console.Write("═");
+                    }
+                    Console.Write("╝");
+                    break;
+                default:
+                    contador = 0;
+                    break;
+
             }
-            Console.Write("╗");
-            Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), 11);
-            Console.Write($"║ {Titulo} ║");
-            Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), 12);
-            Console.Write("╚");
-            for (int i = 0; i <= (Titulo.Length + 1); i++)
-            {
-                Console.Write("═");
-            }
-            Console.Write("╝");
-            Console.WriteLine();
+        }
+        public void Adicionar_Titulo(string titulo)
+        {
+            Titulo = titulo;
         }
     }
 }
-
