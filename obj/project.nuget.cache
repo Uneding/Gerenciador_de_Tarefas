@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YPFiVMwT/uw=",
+  "dgSpecHash": "A12ilCwVrMg=",
   "success": true,
-  "projectFilePath": "D:\\JoãoPaulo\\Gerenciador_de_Tarefas\\Gerenciador_de_Tarefas.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Alunos\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.13\\microsoft.netcore.app.ref.8.0.13.nupkg.sha512",
-    "C:\\Users\\Alunos\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.13\\microsoft.windowsdesktop.app.ref.8.0.13.nupkg.sha512",
-    "C:\\Users\\Alunos\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.13\\microsoft.aspnetcore.app.ref.8.0.13.nupkg.sha512",
-    "C:\\Users\\Alunos\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.13\\microsoft.netcore.app.host.win-x64.8.0.13.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\atividades\\João_Paulo\\Gerenciador_de_Tarefas\\Gerenciador_de_Tarefas.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

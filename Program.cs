@@ -10,13 +10,15 @@ menu.Adicionar_Linha("2 - Listar Tarefas.");
 menu.Adicionar_Linha("3 - Concluir Tarefa.");
 menu.Adicionar_Linha("4 - Remover Tarefa.");
 menu.Adicionar_Linha("0 - Sair.");
-var bloco1 = new Bloco(0f, 0f, 1f, 0.2f, "Black", null);
-bloco1.Adicionar_Cabecalho(Superior);
+var bloco1 = new Bloco(0f, 0f, 1f, 0.2f, "Magenta", null, Superior);
 pagina1.AdicionarBloco(bloco1);
-var bloco2 = new Bloco(0f, 0.2f, 1f, 0.8f, "Blue", menu);
+var bloco2 = new Bloco(0f, 0.2f, 1f, 0.8f, "Blue", menu, null);
 pagina1.AdicionarBloco(bloco2);
+var bloco3 = new Bloco(0f, 0.8f, 1f, 0.2f, "Magenta", null, null);
+pagina1.AdicionarBloco(bloco3);
 pagina1.ExibirPagina();
 Console.ReadLine();
+
 // int? x;
 // while (true)
 // {

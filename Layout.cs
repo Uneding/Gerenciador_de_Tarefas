@@ -127,14 +127,12 @@ namespace Layout
     }
     public class Cabecalho
     {
-        string Titulo { get; set; }
+        public string Titulo { get; set; }
         int Largura_Bloco { get; set; }
         public int contador = 0;
         int Altura_Bloco { get; set; }
-        public int Referecia_Tamanho_Titulo()
-        {
-            return Titulo.Length / 2 + 2;
-        }
+        public int Referecia_Tamanho_Titulo { get; set;}
+        
         public void Adicionar_Referencia_Bloco(int lar_Bloco, int Alt_Bloco)
         {
             Largura_Bloco = lar_Bloco;
@@ -142,8 +140,6 @@ namespace Layout
         }
         public void Caixa()
         {
-            int Centro_X = Largura_Bloco / 2;
-            Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), Altura_Bloco / 2 - 1);
             switch (contador)
             {
                 case 0:
@@ -152,23 +148,18 @@ namespace Layout
                     {
                         Console.Write("═");
                     }
-                    break;
-                case 1:
                     Console.Write("╗");
-                    Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), Altura_Bloco / 2);
+                    break;
+                case 1:                   
                     Console.Write($"║ {Titulo} ║");
-                    Console.SetCursorPosition(Centro_X - ((Titulo.Length / 2) + 2), Altura_Bloco / 2 + 1);
-                    Console.Write("╚");
                     break;
                 case 2:
+                    Console.Write("╚");
                     for (int i = 0; i <= (Titulo.Length + 1); i++)
                     {
                         Console.Write("═");
                     }
                     Console.Write("╝");
-                    break;
-                default:
-                    contador = 0;
                     break;
 
             }
@@ -176,6 +167,7 @@ namespace Layout
         public void Adicionar_Titulo(string titulo)
         {
             Titulo = titulo;
+            Referecia_Tamanho_Titulo = titulo.Length / 2 + 2 ;
         }
     }
 }

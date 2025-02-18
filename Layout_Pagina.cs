@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Diagnostics.Contracts;
 using System.Dynamic;
 using System.Net.Http.Headers;
@@ -59,7 +60,7 @@ namespace Paginas_layout
         public float PercentualLargura { get; set; }
         public float PercentualAltura { get; set; }
         public string Cor { get; set; }
-        public Bloco(float percentualX, float percentualY, float percentualLargura, float percentualAltura, string cor, Corpo? tes)
+        public Bloco(float percentualX, float percentualY, float percentualLargura, float percentualAltura, string cor, Corpo? tes, Cabecalho? x)
         {
             PercentualX = percentualX;
             PercentualY = percentualY;
@@ -67,10 +68,7 @@ namespace Paginas_layout
             PercentualAltura = percentualAltura;
             Cor = cor;
             corpo = tes;
-        }
-        public void Adicionar_Cabecalho( Cabecalho cabeca)
-        {
-            cabecalho = cabeca;
+            cabecalho = x;
         }
         public void ExibirBloco()
         {
@@ -79,14 +77,18 @@ namespace Paginas_layout
             int posY = (int)(Console.WindowHeight * PercentualY);
             int largura = (int)(Console.WindowWidth * PercentualLargura);
             int altura = (int)(Console.WindowHeight * PercentualAltura);
-            cabecalho.Adicionar_Referencia_Bloco(largura-posY,altura-posX);
+            int referencia_Cabeca= ((altura-posX)/2)-2;
+            bool Confirma = true;
+            if(cabecalho != null)
+            {
+                cabecalho.Adicionar_Referencia_Bloco(largura-posX,altura-posY);
+            }         
             Console.SetCursorPosition(posX, posY);
             Console.BackgroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), Cor, true);
 
             for (int i = 0; i < altura; i++)
             {
                 int contadorCaractere = 0;
-                int referencia_Cabeca= (altura-posX)/-1; 
                 string linhaAtual = (corpo != null && contadorLinha < corpo.Linhas.Count) ? corpo.Linhas[contadorLinha] : " ";
                 for (int x = 0; x < largura; x++)
                 {
@@ -109,13 +111,17 @@ namespace Paginas_layout
                             Console.Write(" ");
                         }
                     }
-                    else if (cabecalho != null && posX + x == cabecalho.Referecia_Tamanho_Titulo()&& posY + i == referencia_Cabeca) 
+                    else if (cabecalho != null && posX + x == largura/2-cabecalho.Referecia_Tamanho_Titulo && i == referencia_Cabeca && Confirma) 
                     {
-                        
                             cabecalho.Caixa();
                             ++cabecalho.contador;
                             referencia_Cabeca++;
-                            x = x + cabecalho.Referecia_Tamanho_Titulo();
+                            if(cabecalho.contador > 2)
+                            {
+                                cabecalho.contador = 0;
+                                Confirma = false;
+                            }
+                            x += cabecalho.Titulo.Length + 3;
                            
                     }else
                     {
